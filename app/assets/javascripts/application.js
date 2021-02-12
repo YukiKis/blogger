@@ -13,4 +13,31 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on("turbolinks:load", function(){
+  //= on top
+  var add_counter = 0;
+  
+  $(".tag-list li").hide();
+  $(".sidebar").hide();
+  $(".top-heading").hide().slideDown(500, function(){
+    $(".tag-list li").filter(function(){
+      $(this).show(300, function(){
+        $(".sidebar").show(300);
+      });
+    })
+  });
+  if(add_counter === 0){
+    $(".new-article-btn")
+      .css({
+        boxShadow: "5px 5px blue"
+      })
+      .on("click", function(){
+        add_counter += 1
+        $(this).css({boxShadow: ""})
+      })
+  }
+})
