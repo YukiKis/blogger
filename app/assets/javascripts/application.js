@@ -23,7 +23,10 @@ $(document).on("turbolinks:load", function(){
   
   $(".tag-list li").hide();
   $(".sidebar").hide();
+  $(".header-list").hide();
+  
   $(".top-heading").hide().slideDown(500, function(){
+    $(".header-list").show(300);
     $(".tag-list li").filter(function(){
       $(this).show(300, function(){
         $(".sidebar").show(300);
@@ -40,4 +43,11 @@ $(document).on("turbolinks:load", function(){
         $(this).css({boxShadow: ""})
       })
   }
-})
+  
+  $(".header-list-item").hover( 
+    function(){
+      $(this).children("a").stop().animate({fontSize: "1.5em", backgroundColor: "rgba(0, 0, 155, 0.4)"}, 150)
+    }, function(){
+      $(this).children("a").stop().animate({fontSize: "15px", backgroundColor: ""}, 150)
+    })
+});
