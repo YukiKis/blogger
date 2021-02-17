@@ -1,6 +1,12 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
       <h2 class="top-heading text-center">
         Blogger for What you learned
       </h2>
@@ -12,6 +18,12 @@
         <ul class="header-list">
           <li class="header-list-item"><%= link_to "TOP", root_path %></li>
           <li class="header-list-item"><%= link_to "ABOUT", about_path %></li>
+          <% if current_user %>
+            <li class="header-list-item"><%= link_to "LOGOUT", destroy_user_session_path, method: :delete %></li> 
+          <% else %>
+            <li class="header-list-item"><%= link_to "SIGNIN", new_user_session_path %></li>
+          <li class="header-list-item"><%= link_to "SIGNUP", new_user_registration_path %></li>
+          <% end %>
         </ul>
       </header>
     </div>
